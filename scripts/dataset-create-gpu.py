@@ -12,7 +12,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 vae = AutoencoderKL.from_pretrained("stabilityai/sdxl-vae").to(device)
 
 # Resize function (yeah, my gpu's useless)
-def custom_resize(image, max_size=768, max_area=374544):
+def custom_resize(image, max_size=2048, max_area=696320):
     width, height = image.size
     if width <= max_size and height <= max_size:
         new_width, new_height = width, height
