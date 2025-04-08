@@ -60,10 +60,8 @@ existing_indices = [int(f.split('.')[0]) for f in existing_files if f.endswith('
 start_index = max(existing_indices, default=-1) + 1  # Start from the next index
 
 # Iterate through the dataset starting from the determined index
-for i, item in enumerate(ds['train']):
-    if i < start_index:
-        print(f"Skipping... {i}/{start_index}")
-        continue
+for i in range(start_index, len(ds['train'])):
+    item = ds['train'][i] 
 
     # Load and preprocess
     image = item['image'].convert("RGB")
